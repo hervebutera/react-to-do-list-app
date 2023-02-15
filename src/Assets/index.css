@@ -1,16 +1,56 @@
+@import url("https://fonts.google.com/specimen/Josefin+Sans");
+
+:root {
+  --VeryLightGray: hsl(0, 0%, 98%);
+  --VeryDarkBlue: hsl(235, 21%, 11%);
+  --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+  --LightGrayishBlue: hsl(234, 39%, 85%);
+  --LightGrayishBlue-hover: hsl(236, 33%, 92%);
+  --LightGrayishBlue: hsl(233, 11%, 84%);
+  --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --ligth-box-shadow: 0px 4px 8px 0px var(--LightGrayishBlue-hover),
+    0px 6px 20px 0px var(--LightGrayishBlue-hover);
+  --pink-purpple-gradient-color: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Josefin Sans, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(./images/bg-desktop-light.jpg);
+  background-image: var(--BackgroundImage);
   background-size: 100% 40vh;
   background-repeat: no-repeat;
   background-position: top;
-  background-color: hsl(0, 0%, 98%);
+  background-color: var(--bodyBackgroundColor);
 }
+
+body.light {
+  --BackgroundImage: url(./images/bg-desktop-light.jpg);
+  --bodyBackgroundColor: var(--VeryLightGray);
+  --toDoItems-bg-color: var(--VeryLightGray);
+  --box-shadow: var(--ligth-box-shadow);
+  --border-bottom: var(--LightGrayishBlue);
+  --toDoItem-color: var(--VeryDarkGrayishBlue);
+  --bottomNavColor: var(--DarkGrayishBlue);
+  --bottomNavColor-hover: var(--VeryDarkGrayishBlue);
+}
+body.dark {
+  --BackgroundImage: url(./images/bg-desktop-dark.jpg);
+  --bodyBackgroundColor: var(--VeryDarkBlue);
+  --toDoItems-bg-color: var(--VeryDarkDesaturatedBlue);
+  --box-shadow: none;
+  --border-bottom: var(--VeryDarkGrayishBlue);
+  --toDoItem-color: var(--LightGrayishBlue);
+  --bottomNavColor: var(--VeryDarkGrayishBlue);
+  --bottomNavColor-hover: var(--LightGrayishBlue-hover);
+}
+
 .LayoutCard {
   position: absolute;
   top: 10vh;
@@ -21,7 +61,7 @@ body {
   margin-bottom: 30px;
 }
 .ToDo-head {
-  color: hsl(0, 0%, 98%);
+  color: var(--VeryLightGray);
   width: 40%;
   float: left;
   letter-spacing: 0.7mm;
@@ -34,7 +74,7 @@ body {
 }
 .ItemCard {
   display: inline-block;
-  background-color: hsl(0, 0%, 98%);
+  background-color: var(--toDoItems-bg-color);
   width: 100%;
   height: 50px;
 }
@@ -54,24 +94,19 @@ body {
 }
 .Add-btn {
   width: 15%;
-  height: 60%;
+  height: 50%;
   border-radius: 20px;
   border: none;
-  margin-top: 10px;
+  margin-top: 12px;
   color: #fff;
   font-weight: bold;
-  background-image: linear-gradient(
-    to right,
-    hsl(192, 100%, 67%),
-    hsl(280, 87%, 65%)
-  );
+  background-image: var(--pink-purpple-gradient-color);
   cursor: pointer;
 }
 .ToDoList {
   border-radius: 5px;
-  box-shadow: 0px 4px 8px 0px hsl(236, 33%, 92%),
-    0px 6px 20px 0px hsl(236, 33%, 92%);
-  background-color: hsl(0, 0%, 98%);
+  box-shadow: var(--box-shadow);
+  background-color: var(--toDoItems-bg-color);
   border-radius: 5px;
 }
 .ToDoList ul {
@@ -79,36 +114,32 @@ body {
   margin: 0px;
 }
 .todo-item {
-  border-bottom: 1px solid hsl(233, 11%, 84%);
+  border-bottom: 1px solid var(--border-bottom);
   list-style: none;
   height: 50px;
 }
 .check-box {
   display: inline-block;
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   border-radius: 20px;
-  border: 1.5px solid hsl(236, 33%, 92%);
-  margin: 15px 15px 15px 20px;
-  background-image: linear-gradient(
-    to right,
-    hsl(192, 100%, 67%),
-    hsl(280, 87%, 65%)
-  );
+  border: 1.5px solid var(--toDoItems-bg-color);
+  margin: 17px 15px 15px 20px;
+  background-image: var(--pink-purpple-gradient-color);
   cursor: pointer;
 }
 .check-icon {
   display: inline-block;
-  margin: 4px 3px;
+  margin: 0px 2px 2px;
 }
 .todo-item h3 {
   font-weight: 500;
-  margin: 15px 20px 15px 0px;
+  margin: 18px 20px 15px 0px;
   display: inline-block;
   width: 80%;
   vertical-align: top;
-  font-size: 15px;
-  color: hsl(235, 19%, 35%);
+  font-size: 14px;
+  color: var(--toDoItem-color);
 }
 .bottomNav {
   display: inline-block;
@@ -116,7 +147,7 @@ body {
   height: 40px;
   margin-top: 0px;
   font-weight: 500;
-  color: hsl(236, 9%, 61%);
+  color: var(--bottomNavColor);
 }
 .bottomNav ul,
 .bottomNav span {
@@ -137,11 +168,16 @@ body {
 }
 .nav-li {
   margin-left: 20px;
-  color: hsl(235, 19%, 35%);
+  font-weight: bold;
+  color: var(--bottomNavColor);
 }
 .nav-li,
 .clear-btn {
   cursor: pointer;
+}
+.nav-li:hover,
+.clear-btn:hover {
+  color: var(--bottomNavColor-hover);
 }
 
 .clear-btn {
