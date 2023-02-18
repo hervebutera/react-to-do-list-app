@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ToDoItemsContext = createContext({
   toDos: [],
@@ -9,20 +9,22 @@ export const ToDoItemsContext = createContext({
 });
 
 export const ToDoItemsContextProvider = (props) => {
-  const [toDoItems, setToDoItems] = useState([]);
-  let toDoItemsArr = [];
-
-  if (localStorage["toDoItems"]) {
-    toDoItemsArr = localStorage.getItem("toDoItems");
-    setToDoItems((currentToDoItems) => currentToDoItems.concat(toDoItemsArr));
-  }
+  const [toDoItems, setToDoItems] = useState(() => {
+    return JSON.parse(localStorage.getItem("toDoItems")) || [];
+  });
 
   const addToDoItemHandler = (toDoItemInfo) => {
     setToDoItems((currentToDoItems) => {
       return currentToDoItems.concat(toDoItemInfo);
     });
-    localStorage.setItem("toDoItems", toDoItems);
   };
+
+  useEffect(() => {
+    if (toDoItems) {
+      localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
+    }
+  }, [toDoItems]);
+
   const context = {
     toDos: toDoItems,
     totalToDos: toDoItems.length,

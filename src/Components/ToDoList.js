@@ -1,14 +1,13 @@
 import ToDoItem from "./ToDoItem";
 import BottomNavBar from "./BottomNavBar";
 
-const ToDoList = () => {
+const ToDoList = (props) => {
   return (
     <div className="ToDoList">
       <ul>
-        <ToDoItem />
-        <ToDoItem />
-        <ToDoItem />
-        <ToDoItem />
+        {props.toDos.map((toDo) => {
+          return <ToDoItem key={toDo.id} toDoItem={toDo} />;
+        })}
       </ul>
       <BottomNavBar />
     </div>
