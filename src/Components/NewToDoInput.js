@@ -6,12 +6,15 @@ const NewToDoInput = () => {
   const textInput = useRef();
   const TodoItemsCtx = useContext(ToDoItemsContext);
 
-  const addToDoItemHandler = (e) => {
-    e.preventDefault();
-    TodoItemsCtx.addToDo({
-      id: TodoItemsCtx.totalToDos,
-      title: textInput.current.value,
-    });
+  const addToDoItemHandler = () => {
+    
+    if (textInput.current.value.trim().length !== 0) {
+      TodoItemsCtx.addToDo({
+        id: TodoItemsCtx.totalToDos,
+        title: textInput.current.value,
+        isCompleted: false,
+      });
+    }
 
     textInput.current.value = "";
   };
@@ -22,6 +25,11 @@ const NewToDoInput = () => {
         type="text"
         className="input-field"
         placeholder="Enter a new todo"
+        onKeyDown={(e) => {
+          if (e.code === "Enter") { 
+            addToDoItemHandler();
+          } 
+         }}
         ref={textInput}
       />
       <button className="Add-btn" onClick={addToDoItemHandler}>
