@@ -117,29 +117,60 @@ body.dark {
   border-bottom: 1px solid var(--border-bottom);
   list-style: none;
   height: 50px;
+  cursor: pointer;
 }
 .check-box {
   display: inline-block;
   width: 15px;
   height: 15px;
   border-radius: 20px;
-  border: 1.5px solid var(--toDoItems-bg-color);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-bottom);
   margin: 17px 15px 15px 20px;
-  background-image: var(--pink-purpple-gradient-color);
   cursor: pointer;
 }
+.check-box:hover {
+  border-color: hsl(280, 87%, 65%);
+}
+.check-box-clicked {
+  border: none;
+  background-image: var(--pink-purpple-gradient-color);
+}
 .check-icon {
-  display: inline-block;
+  display: none;
   margin: 0px 2px 2px;
 }
-.todo-item h3 {
+.check-icon-clicked {
+  display: inline-block;
+}
+.todoTitle {
   font-weight: 500;
   margin: 18px 20px 15px 0px;
   display: inline-block;
-  width: 80%;
+  width: 75%;
   vertical-align: top;
   font-size: 14px;
   color: var(--toDoItem-color);
+}
+.todoTitle-completed {
+  text-decoration: line-through;
+  color: var(--border-bottom);
+}
+.remove-btn {
+  display: none;
+
+}
+
+.remove-btn-active {
+  display: inline-block;
+}
+.cross-icon {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+.check-icon-onCompleted {
+  margin: 17px 0px 0px 3px;
 }
 .bottomNav {
   display: inline-block;
