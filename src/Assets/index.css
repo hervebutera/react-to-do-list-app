@@ -18,6 +18,10 @@
   );
 }
 
+* {
+  transition: all 0.5s;
+}
+
 body {
   margin: 0;
   font-family: Josefin Sans, sans-serif;
@@ -91,6 +95,8 @@ body.dark {
   height: 90%;
   border: none;
   outline: none;
+  transition: none;
+  color: var(--toDoItem-color);
 }
 .Add-btn {
   width: 15%;
@@ -159,7 +165,6 @@ body.dark {
 }
 .remove-btn {
   display: none;
-
 }
 
 .remove-btn-active {
@@ -168,9 +173,10 @@ body.dark {
 .cross-icon {
   display: inline-block;
   margin-bottom: 15px;
+  transition: none;
 }
 .check-icon-onCompleted {
-  margin: 17px 0px 0px 3px;
+  margin: 16px 0px 0px 0px;
 }
 .bottomNav {
   display: inline-block;
