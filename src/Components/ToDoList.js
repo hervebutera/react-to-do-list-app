@@ -6,7 +6,14 @@ const ToDoList = (props) => {
     <div className="ToDoList">
       <ul>
         {props.toDos.map((toDo) => {
-          return <ToDoItem key={toDo.id} toDoItem={toDo} />;
+          return (
+            <ToDoItem
+              key={toDo.id}
+              idNum={toDo.id}
+              title={toDo.title}
+              isCompleted={toDo.isCompleted}
+            />
+          );
         })}
       </ul>
       <BottomNavBar />
