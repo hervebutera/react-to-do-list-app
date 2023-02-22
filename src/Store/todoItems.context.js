@@ -6,13 +6,14 @@ export const ToDoItemsContext = createContext({
   addToDo: (toDoItemInfo) => {},
   removeToDo: (toDoItemId) => {},
   isCompletedStatusToggle: (toDoItemId) => {},
+  clearCompletedToDos: () => {},
 });
 
 export const ToDoItemsContextProvider = (props) => {
   const [toDoItems, setToDoItems] = useState(() => {
     return JSON.parse(localStorage.getItem("toDoItems")) || [];
   });
-   //localStorage.removeItem("toDoItems");
+  
   const addToDoItemHandler = (toDoItemInfo) => {
     setToDoItems((currentToDoItems) => {
       return currentToDoItems.concat(toDoItemInfo);
@@ -38,6 +39,15 @@ export const ToDoItemsContextProvider = (props) => {
     });
   };
 
+  const clearCompletedToDos = () => {
+    setToDoItems((currentToDoItems) => {
+      const unCompletedTodos = currentToDoItems.filter((toDo) => {
+        return toDo.isCompleted === false;
+      });
+      return unCompletedTodos;
+    });
+  };
+
   useEffect(() => {
     if (toDoItems) {
       localStorage.setItem("toDoItems", JSON.stringify(toDoItems));
@@ -50,6 +60,7 @@ export const ToDoItemsContextProvider = (props) => {
     addToDo: addToDoItemHandler,
     removeToDo: removeToDoItemHandler,
     isCompletedStatusToggle: isCompletedStatusToggleHandler,
+    clearCompletedToDos: clearCompletedToDos,
   };
 
   return (
