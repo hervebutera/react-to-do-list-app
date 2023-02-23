@@ -1,11 +1,56 @@
 import ToDoItem from "./ToDoItem";
 import BottomNavBar from "./BottomNavBar";
+import { useContext, useEffect, useState } from "react";
+import { ToDoItemsContext } from "../Store/todoItems.context";
 
-const ToDoList = (props) => {
+const ToDoList = () => {
+  const ToDoItemsCtx = useContext(ToDoItemsContext);
+  const [displayedTodos, setDisplayedTodos] = useState(ToDoItemsCtx.toDos);
+  const [displayCategory, setDisplayCategory] = useState("all");
+
+  useEffect(() => {
+    if (displayCategory === "all") {
+      setDisplayedTodos(ToDoItemsCtx.toDos);
+    } else if (displayCategory === "active") {
+      setDisplayedTodos(() => {
+        return ToDoItemsCtx.toDos.filter((todo) => {
+          return todo.isCompleted === false;
+        });
+      });
+    } else if (displayCategory === "completed") {
+      setDisplayedTodos(() => {
+        return ToDoItemsCtx.toDos.filter((todo) => {
+          return todo.isCompleted === true;
+        });
+      });
+    }
+  }, [ToDoItemsCtx.toDos, displayCategory]);
+
+  const displayAllTodosHandler = () => {
+    setDisplayCategory("all");
+    setDisplayedTodos(ToDoItemsCtx.toDos);
+  };
+  const displayActiveTodosHandler = () => {
+    setDisplayCategory("active");
+    setDisplayedTodos(() => {
+      return ToDoItemsCtx.toDos.filter((todo) => {
+        return todo.isCompleted === false;
+      });
+    });
+  };
+  const displayCompletedTodosHandler = () => {
+    setDisplayCategory("completed");
+    setDisplayedTodos(() => {
+      return ToDoItemsCtx.toDos.filter((todo) => {
+        return todo.isCompleted === true;
+      });
+    });
+  };
+
   return (
     <div className="ToDoList">
       <ul>
-        {props.toDos.map((toDo) => {
+        {displayedTodos.map((toDo) => {
           return (
             <ToDoItem
               key={toDo.id}
@@ -16,7 +61,12 @@ const ToDoList = (props) => {
           );
         })}
       </ul>
-      <BottomNavBar />
+      <BottomNavBar
+        displayCategory={displayCategory}
+        onAllClick={displayAllTodosHandler}
+        onActiveClick={displayActiveTodosHandler}
+        onCompletedClick={displayCompletedTodosHandler}
+      />
     </div>
   );
 };
