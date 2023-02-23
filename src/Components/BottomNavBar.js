@@ -55,13 +55,13 @@ const BottomNavBar = (props) => {
         >
           Completed
         </li>
-        <li
-          className="bottom-li clear-btn"
-          onClick={() => ToDoItemsCtx.clearCompletedToDos()}
-        >
-          Clear completed
-        </li>
       </ul>
+      <button
+        className="clear-btn"
+        onClick={() => ToDoItemsCtx.clearCompletedToDos()}
+      >
+        Clear completed
+      </button>
     </div>
   );
 };
