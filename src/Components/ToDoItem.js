@@ -63,11 +63,7 @@ const ToDoItem = (props) => {
         id={`rmv-btn-${props.idNum}`}
         onClick={() => onRemoveItemHandler(props.idNum)}
       >
-        <CrossIcon
-          className={
-            isCompleted ? "cross-icon check-icon-onCompleted" : "cross-icon"
-          }
-        />
+        <CrossIcon className="cross-icon" />
       </div>
     </li>
   );
