@@ -53,17 +53,21 @@ const ToDoItem = (props) => {
           }
         />
       </div>
-      <h3
-        className={isCompleted ? "todoTitle todoTitle-completed" : "todoTitle"}
-      >
-        {props.title}
-      </h3>
-      <div
-        className="remove-btn"
-        id={`rmv-btn-${props.idNum}`}
-        onClick={() => onRemoveItemHandler(props.idNum)}
-      >
-        <CrossIcon className="cross-icon" />
+      <div className="todoTitle-crossIcon-wrapper">
+        <h3
+          className={
+            isCompleted ? "todoTitle todoTitle-completed" : "todoTitle"
+          }
+        >
+          {props.title}
+        </h3>
+        <div
+          className="remove-btn"
+          id={`rmv-btn-${props.idNum}`}
+          onClick={() => onRemoveItemHandler(props.idNum)}
+        >
+          <CrossIcon className="cross-icon" />
+        </div>
       </div>
     </li>
   );

@@ -21,47 +21,49 @@ const BottomNavBar = (props) => {
 
   return (
     <div className="bottomNav">
-      <span className="bottom-li items-count">
+      <div className="bottom-li items-count">
         {`${unCompletedToDosLength} items left`}
-      </span>
-      <ul>
-        <li
-          className={
-            props.displayCategory === "all"
-              ? "bottom-li nav-li nav-li-active"
-              : "bottom-li nav-li"
-          }
-          onClick={props.onAllClick}
+      </div>
+      <div className="li-clearBtn-wrapper">
+        <ul className="left">
+          <li
+            className={
+              props.displayCategory === "all"
+                ? "bottom-li nav-li nav-li-active"
+                : "bottom-li nav-li"
+            }
+            onClick={props.onAllClick}
+          >
+            All
+          </li>
+          <li
+            className={
+              props.displayCategory === "active"
+                ? "bottom-li nav-li nav-li-active"
+                : "bottom-li nav-li"
+            }
+            onClick={props.onActiveClick}
+          >
+            Active
+          </li>
+          <li
+            className={
+              props.displayCategory === "completed"
+                ? "bottom-li nav-li nav-li-active"
+                : "bottom-li nav-li"
+            }
+            onClick={props.onCompletedClick}
+          >
+            Completed
+          </li>
+        </ul>
+        <button
+          className="right clear-btn"
+          onClick={() => ToDoItemsCtx.clearCompletedToDos()}
         >
-          All
-        </li>
-        <li
-          className={
-            props.displayCategory === "active"
-              ? "bottom-li nav-li nav-li-active"
-              : "bottom-li nav-li"
-          }
-          onClick={props.onActiveClick}
-        >
-          Active
-        </li>
-        <li
-          className={
-            props.displayCategory === "completed"
-              ? "bottom-li nav-li nav-li-active"
-              : "bottom-li nav-li"
-          }
-          onClick={props.onCompletedClick}
-        >
-          Completed
-        </li>
-      </ul>
-      <button
-        className="clear-btn"
-        onClick={() => ToDoItemsCtx.clearCompletedToDos()}
-      >
-        Clear completed
-      </button>
+          Clear completed
+        </button>
+      </div>
     </div>
   );
 };

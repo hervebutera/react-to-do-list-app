@@ -49,7 +49,7 @@ const ToDoList = () => {
 
   return (
     <div className="ToDoList">
-      <ul>
+      <ul className="ToDoLi-elements">
         {displayedTodos.map((toDo) => {
           return (
             <ToDoItem
