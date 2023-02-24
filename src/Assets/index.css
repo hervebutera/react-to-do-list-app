@@ -19,7 +19,7 @@
 }
 
 * {
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 
 body {
@@ -28,7 +28,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: var(--BackgroundImage);
-  background-size: 100% 40vh;
+  background-size: 100% 280px;
   background-repeat: no-repeat;
   background-position: top;
   background-color: var(--bodyBackgroundColor);
@@ -57,8 +57,8 @@ body.dark {
 
 .LayoutCard {
   position: absolute;
-  top: 10vh;
-  left: 30%;
+  top: 90px;
+  left: 32%;
   width: 35%;
 }
 .header {
@@ -91,7 +91,7 @@ body.dark {
   margin-left: 20px;
   background-color: inherit;
   font-size: 16px;
-  width: 75%;
+  width: 70%;
   height: 90%;
   border: none;
   outline: none;
@@ -99,6 +99,8 @@ body.dark {
   color: var(--toDoItem-color);
 }
 .Add-btn {
+  float: right;
+  margin-right: 20px;
   width: 15%;
   height: 50%;
   border-radius: 20px;
@@ -113,9 +115,8 @@ body.dark {
   border-radius: 5px;
   box-shadow: var(--box-shadow);
   background-color: var(--toDoItems-bg-color);
-  border-radius: 5px;
 }
-.ToDoList ul {
+.ToDoLi-elements {
   padding: 0px;
   margin: 0px;
 }
@@ -134,13 +135,14 @@ body.dark {
   border-style: solid;
   border-color: var(--border-bottom);
   margin: 17px 15px 15px 20px;
+  vertical-align: top;
   cursor: pointer;
 }
 .check-box:hover {
   border-color: hsl(280, 87%, 65%);
 }
 .check-box-clicked {
-  border: none;
+  border-color: var(--toDoItems-bg-color);
   background-image: var(--pink-purpple-gradient-color);
 }
 .check-icon {
@@ -150,11 +152,15 @@ body.dark {
 .check-icon-clicked {
   display: inline-block;
 }
+.todoTitle-crossIcon-wrapper {
+  width: 85%;
+  display: inline-block;
+}
 .todoTitle {
   font-weight: 500;
-  margin: 18px 20px 15px 0px;
-  display: inline-block;
-  width: 75%;
+  margin: 18px 0px 15px 0px;
+  float: left;
+  width: 80%;
   vertical-align: top;
   font-size: 14px;
   color: var(--toDoItem-color);
@@ -165,18 +171,17 @@ body.dark {
 }
 .remove-btn {
   display: none;
+  margin-left: 3.5vw;
 }
-
 .remove-btn-active {
   display: inline-block;
 }
 .cross-icon {
   display: inline-block;
+  vertical-align: top;
+  margin-top: 15px;
   margin-bottom: 15px;
   transition: none;
-}
-.check-icon-onCompleted {
-  margin: 16px 0px 0px 0px;
 }
 .bottomNav {
   display: inline-block;
@@ -186,18 +191,32 @@ body.dark {
   font-weight: 500;
   color: var(--bottomNavColor);
 }
-.bottomNav ul,
-.bottomNav span {
-  display: inline-block;
-}
-.bottomNav span {
+.items-count {
   margin-left: 20px;
-  margin-top: 15px;
+  vertical-align: top;
+  margin-top: 13px;
+  font-size: 12px;
+  display: inline-block;
+  width: 15%;
 }
-.bottomNav ul {
-  margin-left: 50px;
+.li-clearBtn-wrapper {
+  display: inline-block;
+  width: 70%;
+  margin-right: 10px;
+  margin-left: 5%;
 }
-.bottomNav ul li {
+.left {
+  float: left;
+  padding-left: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+.right {
+  float: right;
+  margin-right: 0px;
+}
+.left li {
   display: inline-block;
 }
 .bottom-li {
@@ -208,6 +227,14 @@ body.dark {
   font-weight: bold;
   color: var(--bottomNavColor);
 }
+.clear-btn {
+  padding: 0px;
+  margin-top: 13px;
+  background-color: transparent;
+  font-size: 12px;
+  color: var(--bottomNavColor);
+  border: none;
+}
 .nav-li,
 .clear-btn {
   cursor: pointer;
@@ -216,11 +243,296 @@ body.dark {
 .clear-btn:hover {
   color: var(--bottomNavColor-hover);
 }
-
-.clear-btn {
-  margin-left: 40px;
-}
-
 .nav-li-active {
   color: hsl(220, 98%, 61%);
+}
+@media only screen and (max-width: 1130px) {
+  .LayoutCard {
+    left: 30%;
+    width: 40%;
+  }
+  .ToDo-head {
+    width: 60%;
+  }
+  .left {
+    margin-left: 2%;
+  }
+  .nav-li {
+    margin-left: 15px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .LayoutCard {
+    width: 50%;
+    left: 25%;
+  }
+  .todoTitle {
+    width: 85%;
+  }
+  .remove-btn {
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 0px;
+  }
+  .left {
+    margin-left: 7%;
+  }
+  .nav-li {
+    margin-left: 20px;
+  }
+  .nav-li:hover,
+  .clear-btn:hover {
+    color: hsl(220, 98%, 61%);
+  }
+}
+@media only screen and (max-width: 850px) {
+  .LayoutCard {
+    width: 70%;
+    left: 15%;
+  }
+  .ItemCard {
+    height: 50px;
+  }
+  .input-field {
+    font-size: 18px;
+  }
+  .Add-btn {
+    font-size: 16px;
+    height: 65%;
+    padding: 0px;
+    margin-top: 8px;
+  }
+  .todo-item {
+    height: 50px;
+  }
+  .check-box {
+    width: 20px;
+    height: 20px;
+    margin: 15px 20px 15px 20px;
+  }
+  .check-icon {
+    margin: 6px 5px;
+  }
+  .todoTitle {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+  .remove-btn {
+    margin-left: 4vw;
+    margin-right: 0px;
+  }
+  .bottomNav {
+    height: 45px;
+  }
+  .bottom-li,
+  .clear-btn {
+    font-size: 15px;
+  }
+  .items-count {
+    margin-top: 15px;
+  }
+  .li-clearBtn-wrapper {
+    margin-left: 5%;
+    margin-right: 0px;
+  }
+  .left {
+    margin-top: 13px;
+    margin-left: 5%;
+  }
+  .right {
+    margin-top: 15px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .LayoutCard {
+    width: 80%;
+    left: 10%;
+  }
+  .todoTitle-crossIcon-wrapper {
+    width: 80%;
+  }
+  .todoTitle {
+    width: 85%;
+  }
+
+  .items-count {
+    margin-left: 20px;
+    margin-top: 15px;
+    width: 30%;
+  }
+  .li-clearBtn-wrapper {
+    display: block;
+    height: 45px;
+    margin-top: 30px;
+    background-color: var(--toDoItems-bg-color);
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .left {
+    float: left;
+    padding-left: 0px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+  }
+  .nav-li {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .right {
+    float: right;
+    margin-right: 20px;
+    margin-top: 15px;
+    padding: 0px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body {
+    background-size: 140% 200px;
+  }
+  .LayoutCard {
+    top: 20px;
+    width: 90%;
+    left: 5%;
+  }
+  .input-field {
+    width: 65%;
+    margin-left: 15px;
+  }
+  .Add-btn {
+    width: 60px;
+    margin-right: 15px;
+  }
+  .todoTitle-crossIcon-wrapper {
+    width: 80%;
+    margin-right: 0px;
+  }
+  .check-box {
+    margin: 15px 15px 10px 15px;
+  }
+  .items-count {
+    margin-left: 15px;
+  }
+  .left {
+    margin-left: 10px;
+  }
+  .nav-li {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .right {
+    margin-right: 15px;
+  }
+}
+@media only screen and (max-width: 345px) {
+  .input-field {
+    width: 60%;
+  }
+  .todoTitle-crossIcon-wrapper {
+    width: 73%;
+  }
+  .todoTitle {
+    width: 80%;
+  }
+  .bottom-li,
+  .clear-btn {
+    font-size: 12px;
+  }
+  .left {
+    margin-top: 10px;
+  }
+  .right {
+    margin-right: 10px;
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  body {
+    background-size: 100% 470px;
+  }
+  .LayoutCard {
+    top: 180px;
+    left: 30%;
+    width: 40%;
+  }
+  .header {
+    margin-bottom: 100px;
+  }
+  .ToDo-head {
+    width: 50%;
+    font-size: 60px;
+  }
+  .theme-icon {
+    margin-top: 60px;
+  }
+  .ItemCard {
+    height: 70px;
+  }
+  .new-todo-input {
+    margin-bottom: 30px;
+  }
+  .input-field {
+    margin-left: 30px;
+    font-size: 25px;
+  }
+  .Add-btn {
+    margin-right: 30px;
+    width: 18%;
+    height: 60%;
+    font-size: 20px;
+    margin-top: 15px;
+  }
+
+  .todo-item {
+    height: 70px;
+  }
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+    margin: 25px 15px 15px 30px;
+  }
+  .check-icon {
+    margin: 5px 5px;
+  }
+  .todoTitle {
+    margin: 23px 0px 15px 0px;
+    width: 85%;
+    font-size: 25px;
+  }
+  .remove-btn {
+    margin-left: 3vw;
+  }
+  .cross-icon {
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+  .bottomNav {
+    height: 60px;
+  }
+  .items-count {
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+  .li-clearBtn-wrapper {
+    width: 70%;
+  }
+  .left {
+    float: left;
+    padding-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+  .bottom-li {
+    font-size: 18px;
+  }
+  .clear-btn {
+    margin-top: 20px;
+    font-size: 18px;
+  }
 }
