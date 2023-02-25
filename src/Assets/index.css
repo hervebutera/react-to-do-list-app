@@ -392,7 +392,7 @@ body.dark {
 
 @media only screen and (max-width: 500px) {
   body {
-    background-size: 140% 200px;
+    background-size: 140% 210px;
   }
   .LayoutCard {
     top: 20px;
@@ -401,6 +401,8 @@ body.dark {
   }
   .input-field {
     width: 65%;
+    height: 90%;
+    height: 45px;
     margin-left: 15px;
   }
   .Add-btn {
