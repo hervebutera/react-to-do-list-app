@@ -35,7 +35,7 @@ body {
 }
 
 body.light {
-  --BackgroundImage: url(./images/bg-desktop-light.webp);
+  --BackgroundImage: url(./images/bg-desktop-light.jpg);
   --bodyBackgroundColor: var(--VeryLightGray);
   --toDoItems-bg-color: var(--VeryLightGray);
   --box-shadow: var(--ligth-box-shadow);
@@ -45,7 +45,7 @@ body.light {
   --bottomNavColor-hover: var(--VeryDarkGrayishBlue);
 }
 body.dark {
-  --BackgroundImage: url(./images/bg-desktop-dark.webp);
+  --BackgroundImage: url(./images/bg-desktop-dark.jpg);
   --bodyBackgroundColor: var(--VeryDarkBlue);
   --toDoItems-bg-color: var(--VeryDarkDesaturatedBlue);
   --box-shadow: none;
@@ -86,8 +86,10 @@ body.dark {
   margin-bottom: 20px;
   border-radius: 5px;
 }
+[type="text"] {
+  -webkit-appearance: textfield;
+}
 .input-field {
-  -webkit-appearance: none;
   float: left;
   margin-left: 20px;
   background-color: inherit;
