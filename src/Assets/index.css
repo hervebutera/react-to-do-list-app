@@ -20,6 +20,7 @@
 
 * {
   transition: all 0.3s;
+  box-sizing: border-box;
 }
 
 body {
@@ -86,9 +87,6 @@ body.dark {
   margin-bottom: 20px;
   border-radius: 5px;
 }
-[type="text"] {
-  -webkit-appearance: textfield;
-}
 .input-field {
   float: left;
   margin-left: 20px;
@@ -100,6 +98,7 @@ body.dark {
   outline: none;
   transition: none;
   color: var(--toDoItem-color);
+  word-wrap: break-word;
 }
 .Add-btn {
   float: right;
@@ -167,6 +166,9 @@ body.dark {
   vertical-align: top;
   font-size: 14px;
   color: var(--toDoItem-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .todoTitle-completed {
   text-decoration: line-through;
